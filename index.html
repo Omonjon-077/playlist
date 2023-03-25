@@ -10,14 +10,19 @@
     <title>Music Player | Omonjon</title>
 </head>
 <body>
+<!--==================== LOADER ====================-->
+<div class="load" id="load">
+    <lottie-player autoplay loop mode="normal" src="loader.json" class="load-gif">
+    </lottie-player>
+</div>
 
 
 <div class="container">
     <div class="wrapper">
         <div class="top-bar">
-            <i class="material-icons">expand_more</i>
-            <span>Now Playing</span>
-            <i class="material-icons">more_horiz</i>
+            <i title="Not working" class="material-icons">expand_more</i>
+            <span>Now Listening</span>
+            <a target="_blank" title="Download here" href="https://t.me/omonjon_music"><i class="material-icons">cloud_download</i></a>
         </div>
         <div class="img-area">
             <img src="" alt="Music backround">
@@ -61,9 +66,15 @@
         </div>
     </div>
 </div>
-<p class="assistant">© by <a href="https://omonjon-077.github.io/Omonjon-Portfolio/" title="Click me">Omonjon Sobirov.</a> All rigths reserved 2023</p>
+
+<p class="copy">Ko'proq musiqalarni tinglamoqchi yoki yuklab olmoqchi bo'lsangiz tepadagi shu <i style="margin-right: 5px; margin-left: 5px;" class="material-icons">cloud_download</i> tugmani bosing</p>
+
+<p class="assistant">© by <a target="_blank" href="https://omonjon-077.github.io/Omonjon-Portfolio/" title="Click me">Omonjon Sobirov.</a> All rigths reserved 2023</p>
 
 
+
+<script src="js/jquery-3.6.3.min.js"></script>
+<script src="js/lottie-player.js"></script>
 <script src="js/music-list.js"></script>
 <script src="js/script.js"></script>
 </body>
