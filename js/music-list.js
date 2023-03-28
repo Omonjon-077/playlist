@@ -124,5 +124,11 @@ let allMusic = [
         artist: "Elman & Mona",
         img: "music-21",
         src: "music-21"
+    },
+    {
+        name: "Зари",
+        artist: "Andro, Elman, Toni & Mona",
+        img: "music-22",
+        src: "music-22"
     }
 ]
