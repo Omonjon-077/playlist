@@ -344,6 +344,7 @@ ul li.playing {
   display: flex;
   justify-content: center;
   align-items: center;
+  column-gap: 7px;
   padding-bottom: 50px;
 }
 
