@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-*::before, *::after{
+
+*::before,
+*::after {
   padding: 0;
   margin: 0;
 }
-:root{
+
+:root {
   --pink: #ff74a4;
   --violet: #9f6ea3;
   --lightblack: #515C6F;
   --white: #ffffff;
   --darkwhite: #cecaca;
   --pinkshadow: #ffcbdd;
-  --lightbshadow: rgba(0,0,0,0.15);
+  --lightbshadow: rgba(0, 0, 0, 0.15);
 }
 
 .load {
@@ -37,14 +41,32 @@
   width: 300px;
 }
 
-.container{
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 100px;
 }
 
-.wrapper{
+#download {
+  margin-top: 7px !important;
+  text-decoration: none;
+  color: var(--pink);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#download i {
+  font-size: 18px !important;
+  color: var(--violet);
+  margin-left: 7px;
+}
+
+.wrapper {
   position: relative;
   width: 380px;
   overflow: hidden;
@@ -72,7 +94,7 @@
   align-items: center;
 }
 
-.music-list li span{
+.music-list li span {
   margin-left: auto;
 }
 
@@ -86,7 +108,7 @@
   color: var(--lightblack);
 }
 
-.img-area{
+.img-area {
   height: 256px;
   width: 100%;
   overflow: hidden;
@@ -95,7 +117,7 @@
   box-shadow: 0px 6px 12px var(--lightbshadow);
 }
 
-.img-area img{
+.img-area img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -148,7 +170,7 @@
   transition: opacity .3s ease;
 }
 
-.progress-area:hover .progress-bar::before{
+.progress-area:hover .progress-bar::before {
   opacity: 1;
 }
 
@@ -198,7 +220,7 @@
   justify-content: center;
 }
 
-.play-pause::before{
+.play-pause::before {
   content: "";
   position: absolute;
   height: 43px;
@@ -230,12 +252,12 @@
   pointer-events: none;
   border-radius: 15px;
   background: var(--white);
-  box-shadow: 0 -5px 10px rgba(0,0,0,0.1);
-  transition:  all .14s ease-out;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+  transition: all .14s ease-out;
 }
 
 /* Bu show class javascript orqali qoshiladi */
-.music-list.show{
+.music-list.show {
   bottom: 0;
   opacity: 1;
   pointer-events: auto;
@@ -267,7 +289,7 @@
   overflow-y: auto;
 }
 
-.music-list ul::-webkit-scrollbar{
+.music-list ul::-webkit-scrollbar {
   width: 0;
 }
 
@@ -280,7 +302,7 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
-.music-list ul li:last-child{
+.music-list ul li:last-child {
   border-bottom: 0;
 }
 
@@ -296,7 +318,7 @@ ul li .audio-duration {
   font-size: 16px;
 }
 
-ul li.playing{
+ul li.playing {
   color: var(--violet);
   pointer-events: none;
 }
@@ -313,15 +335,14 @@ ul li.playing{
   color: var(--violet);
 }
 
-.copy{
+.copy {
   color: var(--lightblack);
   font-size: 14px;
- justify-content: center;
+  justify-content: center;
   margin-top: 50px;
   text-align: center;
   display: flex;
   justify-content: center;
-  column-gap: 10px;
   align-items: center;
   padding-bottom: 50px;
 }

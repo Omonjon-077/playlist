@@ -36,13 +36,13 @@ let allMusic = [
         src: "music-6"
     },
     {
-        name: "Yolgizlik",
+        name: "Yolg'izlik",
         artist: "Timur Alixonov",
         img: "music-7",
         src: "music-7"
     },
     {
-        name: "Yolgizlik",
+        name: "Yolg'izlik",
         artist: "Konsta",
         img: "music-8",
         src: "music-8"

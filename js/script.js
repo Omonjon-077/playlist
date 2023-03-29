@@ -9,6 +9,7 @@ const wrapper = document.querySelector(".wrapper"),
     musicImg = wrapper.querySelector(".img-area img"),
     musicName = wrapper.querySelector(".song-details .name"),
     musicArtist = wrapper.querySelector(".song-details .artist"),
+    download = wrapper.querySelector("#download"),
     mainAudio = wrapper.querySelector("#main-audio"),
     playPauseBtn = wrapper.querySelector(".play-pause"),
     prevBtn = wrapper.querySelector("#prev"),
@@ -21,7 +22,7 @@ const wrapper = document.querySelector(".wrapper"),
 
 
 
-let musicIndex = Math.floor((Math.random() * allMusic.length) +1);
+let musicIndex = Math.floor((Math.random() * allMusic.length) + 1);
 
 window.addEventListener("load", () => {
     loadMusic(musicIndex);
@@ -33,6 +34,8 @@ function loadMusic(indexNumb) {
     musicArtist.innerText = allMusic[indexNumb - 1].artist;
     musicImg.src = `images/${allMusic[indexNumb - 1].img}.jpg`;
     mainAudio.src = `songs/${allMusic[indexNumb - 1].src}.mp3`;
+    download.setAttribute("href", `songs/${allMusic[indexNumb - 1].src}.mp3`);
+    download.setAttribute("title", `Music - ${allMusic[indexNumb - 1].name}`);
 }
 
 function playMusic() {
@@ -104,52 +107,52 @@ mainAudio.addEventListener("timeupdate", (e) => {
 });
 
 
-progressArea.addEventListener("click", (e)=> {
-   let progressWidthval = progressArea.clientWidth;
-   let clickOffSetX = e.offsetX;
-   let songDuration = mainAudio.duration;
+progressArea.addEventListener("click", (e) => {
+    let progressWidthval = progressArea.clientWidth;
+    let clickOffSetX = e.offsetX;
+    let songDuration = mainAudio.duration;
 
-   mainAudio.currentTime = (clickOffSetX / progressWidthval) * songDuration;
-   playMusic();
+    mainAudio.currentTime = (clickOffSetX / progressWidthval) * songDuration;
+    playMusic();
 });
 
 const repeatBtn = wrapper.querySelector("#repeat-plist");
-repeatBtn.addEventListener("click", ()=> {
-   let getText = repeatBtn.innerText;
+repeatBtn.addEventListener("click", () => {
+    let getText = repeatBtn.innerText;
 
-   switch (getText) {
-       case "repeat":
-           repeatBtn.innerText = "repeat_one";
-           repeatBtn.setAttribute("title", "Song looped");
-           break;
-       case "repeat_one" :
-           repeatBtn.innerText = "shuffle";
-           repeatBtn.setAttribute("title", "Playback shuffle");
-           break;
-       case "shuffle" :
-           repeatBtn.innerText = "repeat";
-           repeatBtn.setAttribute("title", "Playlist looped");
-           break;
-   }
+    switch (getText) {
+        case "repeat":
+            repeatBtn.innerText = "repeat_one";
+            repeatBtn.setAttribute("title", "Song looped");
+            break;
+        case "repeat_one":
+            repeatBtn.innerText = "shuffle";
+            repeatBtn.setAttribute("title", "Playback shuffle");
+            break;
+        case "shuffle":
+            repeatBtn.innerText = "repeat";
+            repeatBtn.setAttribute("title", "Playlist looped");
+            break;
+    }
 });
 
-mainAudio.addEventListener("ended", ()=> {
+mainAudio.addEventListener("ended", () => {
     let getText = repeatBtn.innerText;
 
     switch (getText) {
         case "repeat":
             nextMusic();
             break;
-        case "repeat_one" :
+        case "repeat_one":
             mainAudio.currentTime = 0;
             loadMusic(musicIndex);
             playMusic();
             break;
-        case "shuffle" :
+        case "shuffle":
             let randIndex = Math.floor((Math.random() * allMusic.length) + 1);
             do {
                 randIndex = Math.floor((Math.random() * allMusic.length) + 1);
-            }while (musicIndex == randIndex);
+            } while (musicIndex == randIndex);
             musicIndex = randIndex;
             loadMusic(musicIndex);
             playMusic();
@@ -158,31 +161,31 @@ mainAudio.addEventListener("ended", ()=> {
     }
 });
 
-showMoreBtn.addEventListener("click", ()=> {
+showMoreBtn.addEventListener("click", () => {
     musicList.classList.toggle("show");
 });
 
-hideMusicBtn.addEventListener("click", ()=> {
+hideMusicBtn.addEventListener("click", () => {
     showMoreBtn.click();
 });
 
 const ulTag = wrapper.querySelector("ul");
 for (let i = 0; i < allMusic.length; i++) {
-    let liTag = `<li li-index="${i+ 1}">
+    let liTag = `<li li-index="${i + 1}">
                 <p style="margin-right: 20px;" class="music-num">${i + 1}</p>
                 <div class="row">
                     <span>${allMusic[i].name}</span>
                     <p>${allMusic[i].artist}</p>
                 </div>
                  <audio class="${allMusic[i].src}" src="songs/${allMusic[i].src}.mp3"></audio>
-                <span id="${allMusic[i].src}" class="audio-duration">3:40</span>
+                <span id="${allMusic[i].src}" class="audio-duration">3:40</span>                
             </li>`;
     ulTag.insertAdjacentHTML("beforeend", liTag);
 
     let liAudioDuration = ulTag.querySelector(`#${allMusic[i].src}`);
     let liAudioTag = ulTag.querySelector(`.${allMusic[i].src}`);
 
-    liAudioTag.addEventListener("loadeddata", ()=> {
+    liAudioTag.addEventListener("loadeddata", () => {
         let audioDuration = liAudioTag.duration;
         let totalMin = Math.floor(audioDuration / 60);
         let totalSec = Math.floor(audioDuration % 60);
@@ -199,13 +202,13 @@ const allLiTags = ulTag.querySelectorAll("li");
 function playingNow() {
     for (let j = 0; j < allLiTags.length; j++) {
         let audioTag = allLiTags[j].querySelector(".audio-duration");
-        if (allLiTags[j].classList.contains("playing")){
+        if (allLiTags[j].classList.contains("playing")) {
             allLiTags[j].classList.remove("playing");
             let addDuration = audioTag.getAttribute("t-duration");
             audioTag.innerText = addDuration;
         }
 
-        if (allLiTags[j].getAttribute("li-index") == musicIndex){
+        if (allLiTags[j].getAttribute("li-index") == musicIndex) {
             allLiTags[j].classList.add("playing");
             audioTag.innerText = "Playing";
         };
